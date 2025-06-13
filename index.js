@@ -15,6 +15,7 @@ const capeDir = path.join(__dirname, "public/uploads/capes");
 
 // Serve files statically
 app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 // Multer setup for both skin and cape
@@ -55,7 +56,7 @@ app.get("/", (req, res) => {
     <p>This file is used by <strong>CustomSkinLoader mod</strong> to load skins and capes from this server.<br>
     Place it in: <code>.minecraft/CustomSkinLoader/CustomSkinLoader.json</code></p>
     
-    <a href="/public/CustomSkinLoader.json" download="CustomSkinLoader.json">
+    <a href="/CustomSkinLoader.json" download="CustomSkinLoader.json">
       <button>Download CustomSkinLoader.json</button>
     </a>
   `);
