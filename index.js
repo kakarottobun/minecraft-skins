@@ -2,6 +2,13 @@ const express = require("express");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+const dotenv = require("dotenv");
+
+dotenv.config();
+
+// Config from .env
+const INTERVAL = parseInt(process.env.INTERVAL_MS) || 50000;
+let urls = [];
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -95,6 +102,28 @@ app.post("/upload", (req, res) => {
 
     res.send(output);
   });
+});
+
+// Send health-check to all URLs
+const pingHealthChecks = async () => {
+  console.log("Pinging URLs...");
+  for (const base of urls) {
+    const url = `${base}/health-check`;
+    try {
+      const res = await axios.get(url);
+      console.log(`✅ ${url} → ${res.status} ${res.statusText}`);
+    } catch (err) {
+      console.error(`❌ ${url} → ${err.message}`);
+    }
+  }
+};
+
+// Start the interval
+setInterval(pingHealthChecks, INTERVAL);
+
+// Self health check endpoint
+app.get("/health-check", (req, res) => {
+  res.json({ status: "ok" });
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
