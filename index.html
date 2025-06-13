@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SkinView3D Test</title>
+    <script src="https://unpkg.com/skinview3d@1.18.1/bundles/skinview3d.min.js"></script>
+    <style>
+      #viewer-container {
+        width: 600px;
+        height: 400px;
+        background: black;
+        border: 2px solid green;
+        margin: 20px auto;
+      }
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="viewer-container">
+      <canvas id="viewer"></canvas>
+    </div>
+
+    <script>
+      const canvas = document.getElementById("viewer");
+      const viewer = new skinview3d.SkinViewer({
+        canvas: canvas,
+        width: canvas.clientWidth,
+        height: canvas.clientHeight,
+        skin: "https://textures.minecraft.net/texture/cc3e22b2e71108cc19111047c8b4e3a9cba72c64e4f7f4c98c22c1a857e1",
+      });
+
+      viewer.controls.enableZoom = true;
+      viewer.controls.enableRotate = true;
+      viewer.animation = new skinview3d.WalkingAnimation();
+    </script>
+  </body>
+</html>
