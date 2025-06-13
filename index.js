@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
     <p>This file is used by <strong>CustomSkinLoader mod</strong> to load skins and capes from this server.<br>
     Place it in: <code>.minecraft/CustomSkinLoader/CustomSkinLoader.json</code></p>
     
-    <a href="/CustomSkinLoader.json" download="CustomSkinLoader.json">
+    <a href="/public/CustomSkinLoader.json" download="CustomSkinLoader.json">
       <button>Download CustomSkinLoader.json</button>
     </a>
   `);
