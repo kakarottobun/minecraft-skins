@@ -6,9 +6,9 @@
       "name": "GithubSkin",
       "type": "Legacy",
       "checkPNG": false,
-      "skin": "https://noocool.github.io/minecraft-server/minecraft-skins/skins/{USERNAME}.png",
+      "skin": "https://minecraft-skins.onrender.com/uploads/skins/{USERNAME}.png",
       "model": "auto",
-      "cape": "https://noocool.github.io/minecraft-server/minecraft-skins/capes/{USERNAME}.png"
+      "cape": "https://minecraft-skins.onrender.com/uploads/capes/{USERNAME}.png"
     },
     {
       "name": "Mojang",
